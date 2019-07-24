@@ -29,3 +29,16 @@ curl -X POST \
     http://localhost:8383
 
 ```
+
+## Postgres
+Si besoin, lancer un serveur postgres via Docker 
+
+```
+mkdir $HOME/docker/postgres/volumes
+docker run --rm -d \
+     --name postgres \
+     -e POSTGRES_PASSWORD=postgres \
+     -p 5432:5432 \
+     -v $HOME/docker/postgres/volumes:/var/lib/postgresql/data \
+     postgres
+```
