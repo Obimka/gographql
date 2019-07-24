@@ -10,7 +10,6 @@ import (
 
 // GetUserQuery returns the queries available against user type.
 func GetUserQuery() *graphql.Field {
-	log.Print("GetUserQuery")
 	return &graphql.Field{
 		Type: graphql.NewList(types.UserType),
 		Resolve: func(params graphql.ResolveParams) (interface{}, error) {

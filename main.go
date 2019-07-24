@@ -32,6 +32,7 @@ func main() {
 
 	httpHandler := handler.New(&handler.Config{
 		Schema: &schema,
+		Pretty: true,
 	})
 
 	postgres.DBConnect()
