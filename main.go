@@ -9,6 +9,7 @@ import (
 
 	"github.com/graphql-go/graphql"
 	"github.com/graphql-go/handler"
+	"github.com/mnmtanish/go-graphiql"
 )
 
 func main() {
@@ -38,9 +39,9 @@ func main() {
 	postgres.DBConnect()
 	defer postgres.DBClose()
 
-	http.Handle("/", httpHandler)
+	http.Handle("/graphql", httpHandler)
+	http.HandleFunc("/", graphiql.ServeGraphiQL)
 	log.Print("ready: listening...\n")
 
 	http.ListenAndServe(":8383", nil)
-
 }

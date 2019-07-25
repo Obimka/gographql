@@ -7,6 +7,6 @@ import (
 // GetRootFields returns all the available queries.
 func GetRootFields() graphql.Fields {
 	return graphql.Fields{
-		"user": GetUserQuery(),
+		"users": GetUserQuery(),
 	}
 }
