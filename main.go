@@ -1,15 +1,17 @@
 package main
 
 import (
-	"cadoles/graphql/mutations"
-	"cadoles/graphql/postgres"
-	"cadoles/graphql/queries"
 	"log"
 	"net/http"
 
+	"cadoles/graphql/mutations"
+	"cadoles/graphql/postgres"
+	"cadoles/graphql/queries"
+	"cadoles/graphql/security"
+
 	"github.com/graphql-go/graphql"
 	"github.com/graphql-go/handler"
-	"github.com/mnmtanish/go-graphiql"
+	graphiql "github.com/mnmtanish/go-graphiql"
 )
 
 func main() {
@@ -39,7 +41,7 @@ func main() {
 	postgres.DBConnect()
 	defer postgres.DBClose()
 
-	http.Handle("/graphql", httpHandler)
+	http.Handle("/graphql", security.Handle(httpHandler))
 	http.HandleFunc("/", graphiql.ServeGraphiQL)
 	log.Print("ready: listening...\n")
 

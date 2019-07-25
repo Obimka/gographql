@@ -1,0 +1,8 @@
+{
+    "DB_HOST":"localhost",
+    "DB_PORT":"5432",
+    "DB_USER":"graphql",
+    "DB_PASSWORD":"graphql",
+    "DB_NAME":"graphql",
+    "JWT_SECRET":"cadoles"
+}

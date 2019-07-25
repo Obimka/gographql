@@ -44,7 +44,6 @@ query GetAllUsers {
 
 ```
 
-
 ## Mutation
 Toute requếte visant à modifier une donnée est appellée une 'Mutation'
 
@@ -68,7 +67,6 @@ mutation CreateUser($firstname: String!, $lastname: String!) {
     lastname
   }
 }
-
 
 ```
 
@@ -99,5 +97,9 @@ firstname TEXT,
 lastname TEXT
   );
 
+> CREATE TABLE roles (
+id SERIAL PRIMARY KEY,
+name TEXT 
+  );
 
 ```

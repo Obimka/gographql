@@ -1,18 +1,11 @@
 package postgres
 
 import (
+	"cadoles/graphql/config"
 	"database/sql"
 	"fmt"
 
 	_ "github.com/lib/pq"
-)
-
-const (
-	DB_HOST     = "localhost"
-	DB_PORT     = "5432"
-	DB_USER     = "graphql"
-	DB_PASSWORD = "graphql"
-	DB_NAME     = "graphql"
 )
 
 var (
@@ -26,8 +19,9 @@ func checkErr(err error, DB *sql.DB) {
 }
 
 func DBConnect() {
+	conf := config.GetConfig()
 	dbinfo := fmt.Sprintf("host=%s port=%s user=%s password=%s dbname=%s sslmode=disable",
-		DB_HOST, DB_PORT, DB_USER, DB_PASSWORD, DB_NAME)
+		conf.DB_HOST, conf.DB_PORT, conf.DB_USER, conf.DB_PASSWORD, conf.DB_NAME)
 	var err error
 	DB, err = sql.Open("postgres", dbinfo)
 	checkErr(err, DB)
